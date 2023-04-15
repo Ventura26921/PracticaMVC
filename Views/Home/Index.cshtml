@@ -1,8 +1,56 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+@{
+    IEnumerable<string> strings = new List<string> { "Laptop", "Impresora", "Accesorios", "Proyectores", "Tintas" };
+}
+
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    
+</div>
+
+<div class="row">
+    <div class="form-group">
+        <label>Nombre Equipo</label>
+        <input name=" txtNombreEquipo" type="text" value="" class="form-control"/>
+        @Html.TextBox("txtNombre", " ", new {@class="form-control"} )
+    </div>
+    <div class="form-group">
+        @Html.Label("lblDescripcion", "Descripcion")
+        @Html.TextArea("txaDescripcion", "Valor asignado", new {@class="form-control"})
+    </div>
+    <div class="form-group">
+        @Html.Label("lblModelo", "Modelo")
+        @Html.TextBox("txaModelo", "",new {@class="form-control"})
+    </div>
+    <div class="form-group">
+        @Html.Label("lblAnioCompra", "Año de compra")
+        @Html.ListBox("Lista", new List<SelectListItem>{
+            new SelectListItem{Text="2005", Value="2005"},
+            new SelectListItem{Text="2006", Value="2006"},
+            new SelectListItem{Text="2007", Value="2007"}
+        })
+    </div>
+    <div class="form-group">
+        @Html.Label("lblCosto", "Costo")
+        @Html.TextBox("txaCosto", "",new {@class="form-control"})
+    </div>
+    <div class="form-group">
+        @Html.Label("lblVidaUtil", "Vida Util")
+        @Html.TextBox("txaVidaUtil", "",new {@class="form-control"})
+    </div>
+    <div class="form-group">
+        @Html.Label("lblTipoEquipo", "Tipo de Equipo")
+        @Html.DropDownList("ddlTipoEquipo", new SelectList(strings), "Seleccione un tipo")
+    </div>
+    <div class="form-group">
+        @Html.CheckBox("estado") Inactivo
+    </div>
+    <div class="form-group">
+        <input typeof="submit" class="btn btn-primary" value="Guardar"/>
+        @Html.ActionLink("Guardar", "Guardar", "home")
+    </div>
 </div>
